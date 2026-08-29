@@ -1,0 +1,15 @@
+Create a travel itinerary based on this request:
+
+    {request.prompt}
+
+    Return ONLY valid JSON in this exact structure:
+
+    {{
+        "destination": "string",
+        "days": [
+            {{
+                "day": 1,
+                "activities": ["activity 1", "activity 2"]
+            }}
+        ]
+    }}
