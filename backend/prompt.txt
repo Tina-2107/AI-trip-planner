@@ -1,15 +1,58 @@
-Create a travel itinerary based on this request:
+Create a detailed travel itinerary based on the user's request below.
 
-    {request.prompt}
+USER REQUEST:
+{request.prompt}
 
-    Return ONLY valid JSON in this exact structure:
+Your job is to create a practical, realistic, and well-organized itinerary.
 
-    {{
-        "destination": "string",
-        "days": [
-            {{
-                "day": 1,
-                "activities": ["activity 1", "activity 2"]
-            }}
-        ]
-    }}
+REQUIREMENTS:
+
+* Identify the destination from the user's request.
+* Create an itinerary for the requested number of days.
+* Organize the trip day-by-day.
+* Each day must contain multiple individual stops/activities.
+* Arrange stops in a logical order based on location and time of day.
+* Include a reasonable time for each stop.
+* Keep the itinerary realistic and avoid scheduling too many activities in one day.
+* Consider the user's interests, travel style, and stated preferences.
+* Include a short description explaining what the traveler can do at each stop.
+* If the user provides a budget, try to keep recommendations appropriate for that budget.
+* If the user does not provide enough information, make sensible assumptions.
+* Do not invent impossible schedules or duplicate the same attraction unnecessarily.
+
+OUTPUT FORMAT:
+Return ONLY valid JSON.
+Do not include Markdown.
+Do not include ```json.
+Do not include explanations before or after the JSON.
+
+Use exactly this structure:
+
+{
+"destination": "string",
+"summary": "short summary of the overall trip",
+"days": [
+{
+"day": 1,
+"title": "short title for the day",
+"stops": [
+{
+"id": "unique-stop-id",
+"name": "name of place or activity",
+"time": "09:00 AM",
+"description": "short description of what to do at this stop"
+}
+]
+}
+]
+}
+
+IMPORTANT:
+
+* "days" must contain exactly the requested number of days.
+* Each day must contain at least 2 stops.
+* Every stop must have a unique "id".
+* "day" must be a number.
+* "time" should be a human-readable time.
+* All strings must use double quotes.
+* Return syntactically valid JSON that can be parsed directly with JSON.parse().
