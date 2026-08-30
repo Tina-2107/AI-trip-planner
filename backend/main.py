@@ -13,9 +13,7 @@ from utils.trip_normalizer import normalize_trip
 
 load_dotenv()
 
-
 PROMPT_FILE_PATH = Path(__file__).resolve().parent / "prompt.txt"
-
 app = FastAPI()
 
 app.add_middleware(

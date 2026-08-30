@@ -1,5 +1,6 @@
+const API_URL = import.meta.env.VITE_API_URL;
 export async function generateTrip(prompt) {
-  const response = await fetch("https://ai-trip-planner-d6m1.onrender.com", {
+  const response = await fetch(`${API_URL}/generate-trip`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
