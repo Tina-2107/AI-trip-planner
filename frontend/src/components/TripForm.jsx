@@ -41,23 +41,33 @@ function TripForm({ onTripGenerated }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="trip-form" onSubmit={handleSubmit}>
       <textarea
+        id="trip-prompt"
+        className="trip-form__input"
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
         placeholder="Describe your trip..."
         disabled={status === "loading"}
       />
 
-      <button type="submit" disabled={loading} disabled={status === "loading"}>
+      <button type="submit" disabled={loading} className="trip-form__submit">
         {loading ? "Generating..." : "Generate Trip"}
       </button>
-      {status === "loading" && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+
+      {status === "loading" && <p className="trip-form__status">Loading...</p>}
+
       {status === "error" && (
-        <div>
+        <div className="trip-form__error">
           <p>{error}</p>
-          <button type="button" onClick={handleRetry}></button>
+
+          <button
+            type="button"
+            onClick={handleRetry}
+            className="trip-form__retry"
+          >
+            Retry
+          </button>
         </div>
       )}
     </form>

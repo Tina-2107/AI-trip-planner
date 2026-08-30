@@ -86,33 +86,50 @@ function StopCard({ stop, dayIndex, stopIndex, setTrip, stopCount }) {
   }
 
   return (
-    <div>
-      <button onClick={() => setExpanded(!expanded)}>
-        {expanded ? "▼" : "▶"}
-      </button>
+    <article className="stop">
+      <div className="stop__header">
+        <button
+          className="stop__toggle"
+          onClick={() => setExpanded(!expanded)}
+          aria-expanded={expanded}
+          aria-label={expanded ? "Collapse details" : "Expand details"}
+        >
+          {expanded ? "▼" : "▶"}
+        </button>
 
-      <strong>{stop.name}</strong>
+        <strong className="stop__name">{stop.name}</strong>
 
-      {stop.time && <span> — {stop.time}</span>}
+        {stop.time && <span className="stop__time"> {stop.time}</span>}
+      </div>
 
       {expanded && (
-        <div>
+        <div className="stop__details">
           <p>{stop.description}</p>
         </div>
       )}
 
-      <div>
-        <button onClick={moveUp} disabled={stopIndex === 0}>
+      <div className="stop__actions">
+        <button
+          onClick={moveUp}
+          disabled={stopIndex === 0}
+          aria-label="Move up"
+        >
           ↑
         </button>
 
-        <button onClick={moveDown} disabled={stopIndex === stopCount - 1}>
+        <button
+          onClick={moveDown}
+          disabled={stopIndex === stopCount - 1}
+          aria-label="Move down"
+        >
           ↓
         </button>
 
-        <button onClick={removeStop}>Remove</button>
+        <button onClick={removeStop} aria-label="Remove stop">
+          ✕
+        </button>
       </div>
-    </div>
+    </article>
   );
 }
 

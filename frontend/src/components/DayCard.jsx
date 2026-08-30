@@ -4,17 +4,28 @@ import StopCard from "./StopCard";
 }
 function DayCard({ day, dayIndex, setTrip }) {
   return (
-    <section>
-      <h3>Day {day.day}</h3>
-      {day.stops.map((stop, stopIndex) => (
-        <StopCard
-          key={stop.id || `${dayIndex}-${stopIndex}`}
-          stop={stop}
-          dayIndex={dayIndex}
-          stopIndex={stopIndex}
-          setTrip={setTrip}
-        />
-      ))}
+    <section className="day-card">
+      <div className="day-card__header">
+        <span className="day-card__number">Day {day.day}</span>
+        {day.title && <h3 className="day-card__title">{day.title}</h3>}
+      </div>
+      <ol className="route">
+        {day.stops.map((stop, stopIndex) => (
+          <li
+            className="route__item"
+            key={stop.id || `${dayIndex}-${stopIndex}`}
+          >
+            <span className="route__pin">{stopIndex + 1}</span>
+            <StopCard
+              stop={stop}
+              dayIndex={dayIndex}
+              stopIndex={stopIndex}
+              stopCount={day.stops.length}
+              setTrip={setTrip}
+            />
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }

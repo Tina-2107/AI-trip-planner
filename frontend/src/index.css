@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+
+/* ---------- Design tokens ---------- */
+
+:root {
+  /* Travel Desk: parchment, rust-red route thread, deep pine. */
+
+  --paper: #f1ecdd;
+  --paper-raised: #fbf8ef;
+  --paper-shadow: #e5ddc7;
+
+  --ink: #24241e;
+  --ink-soft: #5a5848;
+  --ink-faint: #8b8873;
+
+  --thread: #bd4128;
+  --thread-dark: #9c3620;
+
+  --pine: #1f5c52;
+  --pine-dark: #163f38;
+
+  --ochre: #b9791f;
+
+  --line: #c9c0a4;
+  --surface: #fffdf8;
+  --on-accent: #fffdf8;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "Space Mono", "Courier New", monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-card: 0 10px 30px -14px rgba(36, 36, 30, 0.4);
+  --shadow-soft: 0 2px 8px -2px rgba(36, 36, 30, 0.15);
+
+  color-scheme: light;
+}
+
+/* ---------- Global styles ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--paper);
+  background-image: radial-gradient(var(--paper-shadow) 1px, transparent 1px);
+  background-size: 18px 18px;
+
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ---------- Typography ---------- */
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+/* ---------- Form controls ---------- */
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+textarea,
+input {
+  font-family: inherit;
+}
+
+/* ---------- Accessibility ---------- */
+
+:focus-visible {
+  outline: 2px solid var(--pine);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
