@@ -44,6 +44,9 @@ async def generate_trip(request:TripRequest):
         contents=prompt,
         config=types.GenerateContentConfig(response_mime_type="application/json"),
     )
+    
+    
+    print("GEMINI RESPONSE:", response.text)
     #wrap in try/except to return proper error
     try:
         trip = json.loads(response.text)

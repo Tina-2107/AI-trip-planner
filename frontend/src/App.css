@@ -394,3 +394,61 @@
 .stop__actions button:disabled {
   opacity: 0.35;
 }
+@media (max-width: 600px) {
+  .app-header {
+    padding: 24px 16px 18px;
+  }
+
+  .app-header__title {
+    font-size: 1.4rem;
+  }
+
+  .app-header__tagline {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .app-shell {
+    padding: 20px 16px 48px;
+  }
+
+  .desk-panel {
+    padding: 18px;
+  }
+
+  .day-card {
+    padding: 20px 16px 18px;
+  }
+
+  .itinerary__destination {
+    font-size: 1.7rem;
+  }
+
+  .stop__header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .stop__time {
+    margin-left: 36px;
+  }
+
+  .trip-form__input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .trip-form__submit {
+    width: 100%;
+  }
+
+  .stop__actions button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .stop__toggle {
+    width: 32px;
+    height: 32px;
+  }
+}

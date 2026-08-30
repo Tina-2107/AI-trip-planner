@@ -5,7 +5,7 @@ function TripForm({ onTripGenerated }) {
   const [prompt, setPrompt] = useState("");
   const [error, setError] = useState("");
   const [status, setStatus] = useState("idle");
-
+  const [loading, setLoading] = useState(false);
   const requestIdRef = useRef(0);
 
   async function submitTrip() {
@@ -16,6 +16,7 @@ function TripForm({ onTripGenerated }) {
       return;
     }
     const requestId = ++requestIdRef.current;
+    setLoading(true);
     setStatus("loading");
     setError("");
     try {
@@ -37,7 +38,7 @@ function TripForm({ onTripGenerated }) {
       setError(err.message || "Something went wrong.");
     } finally {
       if (requestId === requestIdRef.current) {
-        setStatus("idle");
+        setLoading(false);
       }
     }
   }
@@ -61,12 +62,8 @@ function TripForm({ onTripGenerated }) {
         disabled={status === "loading"}
       />
 
-      <button
-        type="submit"
-        disabled={status === "loading"}
-        className="trip-form__submit"
-      >
-        {status === "loading" ? "Generating..." : "Generate Trip"}
+      <button type="submit" disabled={loading} className="trip-form__submit">
+        {loading ? "Generating..." : "Generate Trip"}
       </button>
 
       {status === "loading" && <p className="trip-form__status">Loading...</p>}
