@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { generateTrip } from "../api.js";
 
 function TripForm({ onTripGenerated }) {
   const [prompt, setPrompt] = useState("");
-
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [status, setStatus] = useState("idle");
+
+  const requestIdRef = useRef(0);
 
   async function submitTrip() {
     // Handle empty input
@@ -15,20 +15,30 @@ function TripForm({ onTripGenerated }) {
       setStatus("error");
       return;
     }
-    setLoading(true);
+    const requestId = ++requestIdRef.current;
     setStatus("loading");
     setError("");
     try {
       const data = await generateTrip(prompt);
+      // A newer request has started since this one was sent - this
+      // response is stale, so it must not overwrite current state.
+      if (requestId !== requestIdRef.current) {
+        return;
+      }
       onTripGenerated(data);
       setStatus("success");
       setPrompt("");
     } catch (err) {
+      if (requestId !== requestIdRef.current) {
+        return;
+      }
       console.error(err);
       setStatus("error");
       setError(err.message || "Something went wrong.");
     } finally {
-      setLoading(false);
+      if (requestId === requestIdRef.current) {
+        setStatus("idle");
+      }
     }
   }
   function handleSubmit(e) {
@@ -51,8 +61,12 @@ function TripForm({ onTripGenerated }) {
         disabled={status === "loading"}
       />
 
-      <button type="submit" disabled={loading} className="trip-form__submit">
-        {loading ? "Generating..." : "Generate Trip"}
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        className="trip-form__submit"
+      >
+        {status === "loading" ? "Generating..." : "Generate Trip"}
       </button>
 
       {status === "loading" && <p className="trip-form__status">Loading...</p>}
