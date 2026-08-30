@@ -371,6 +371,7 @@ http://127.0.0.1:8000/docs
 - [x] Improve error handling
 - [x] Add persistent itinerary storage
 - [x] Improve UI/UX
+- [x] Deploy application
 
 ## AI Usage
 
@@ -395,8 +396,6 @@ AI-generated suggestions were evaluated against the project's requirements and a
 - Itinerary modifications are currently maintained in frontend state and are not persisted.
 
 - The application currently focuses on itinerary generation and basic itinerary editing rather than complete trip booking.
-
-- The application has not yet been deployed.
 
 ## Time Spent
 
@@ -445,4 +444,3 @@ Planned improvements include:
 - Maps and location integration
 - Weather information
 - Budget estimation
-- Deployment
