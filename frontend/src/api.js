@@ -8,7 +8,8 @@ export async function generateTrip(prompt) {
   });
 
   if (!response.ok) {
-    throw new Error("Failed to generate trip");
+    const body = await response.json().catch(() => null);
+    throw new Error(body?.detail || "Failed to generate trip");
   }
 
   return response.json();

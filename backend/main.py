@@ -47,5 +47,10 @@ async def generate_trip(request:TripRequest):
         trip = json.loads(response.text)
     except(json.JSONDecodeError, AttributeError):
         raise HTTPException(status_code=502, detail="Model returned invalid JSON")
-
+    # when request is not about trip detail
+    if isinstance(trip, dict) and trip.get("error") == "not_a_travel_request":
+        raise HTTPException(
+        status_code=422,
+        detail="That doesn't look like a trip request. Try something like '5 day trip to Goa focused on beaches.'"
+        )
     return trip

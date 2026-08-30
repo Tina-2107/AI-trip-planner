@@ -26,7 +26,7 @@ function TripForm({ onTripGenerated }) {
     } catch (err) {
       console.error(err);
       setStatus("error");
-      setError("Something went wrong.");
+      setError(err.message || "Something went wrong.");
     } finally {
       setLoading(false);
     }

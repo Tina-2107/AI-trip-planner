@@ -1,3 +1,11 @@
+FIRST, check whether the user's request is actually a travel/trip-planning request that names or implies a destination and travel intent.
+
+If the request is NOT a valid travel request (e.g., it's a math problem, unrelated question, gibberish, or has no identifiable destination or trip intent), respond with ONLY this exact JSON and nothing else:
+
+{"error": "not_a_travel_request"}
+
+Do not invent a destination or itinerary in this case. Only proceed to build a full itinerary if the request is genuinely about travel planning.
+
 Create a detailed travel itinerary based on the user's request below.
 
 USER REQUEST:
