@@ -368,10 +368,9 @@ http://127.0.0.1:8000/docs
 - [x] Add expand functionality
 - [x] Add remove functionality
 - [x] Add stop reordering
-- [ ] Improve error handling
-- [ ] Add persistent itinerary storage
-- [ ] Improve UI/UX
-- [ ] Deploy application
+- [x] Improve error handling
+- [x] Add persistent itinerary storage
+- [x] Improve UI/UX
 
 ## AI Usage
 
@@ -395,8 +394,6 @@ AI-generated suggestions were evaluated against the project's requirements and a
 
 - Itinerary modifications are currently maintained in frontend state and are not persisted.
 
-- Error handling can be improved for API failures and unexpected responses.
-
 - The application currently focuses on itinerary generation and basic itinerary editing rather than complete trip booking.
 
 - The application has not yet been deployed.
@@ -407,13 +404,17 @@ Approximate development time for the current milestone:
 
 **~4.5 hours**
 
-| Activity                          |           Time |
-| --------------------------------- | -------------: |
-| Learning, architecture & research |        ~1 hour |
-| Backend / AI integration          |     ~1.5 hours |
-| React UI & interactions           |     ~1.5 hours |
-| Testing & documentation           |      ~0.5 hour |
-| **Total**                         | **~4.5 hours** |
+| Activity                            |         Time |
+| ----------------------------------- | -----------: |
+| Learning, architecture & research   |      ~1 hour |
+| Backend / AI integration            |   ~1.5 hours |
+| React UI & interactions             |   ~1.5 hours |
+| Testing & documentation             |    ~0.5 hour |
+| Improve UI                          |   ~0.75 hour |
+| Error handling                      |    ~0.5 hour |
+| README / Git cleanup                |   ~0.25 hour |
+| Buffer / debugging/try to deploying |    ~0.5 hour |
+| **Total**                           | **~8 hours** |
 
 The total time includes both **learning/research and implementation**, including debugging, testing, and documentation.
 
@@ -436,7 +437,7 @@ node_modules/
 
 Planned improvements include:
 
-- Better API and frontend error handling
+- Better API and frontend error handling (including request cancellation via AbortController)
 - Persistent itinerary storage
 - Authentication
 - Improved itinerary editing
